@@ -1,0 +1,16 @@
+FROM node:12
+
+ENV TARGET_FOLDER_NAME="blockchain-node-workspace"
+RUN git clone https://gitlab.pdmfc.com/pharmaledger/blockchain-node-workspace.git $TARGET_FOLDER_NAME
+
+RUN cd $TARGET_FOLDER_NAME && \
+    npm install --unsafe-perm
+
+RUN cd $TARGET_FOLDER_NAME && \
+    npm run build privatesky
+
+WORKDIR /$TARGET_FOLDER_NAME/ethereum-anchoring/ApiAdaptor
+
+EXPOSE 3000
+
+CMD [ "node" , "index.js" ]

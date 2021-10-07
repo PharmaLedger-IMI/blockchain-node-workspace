@@ -2,5 +2,6 @@
 node_modules
 /ethereum-anchoring
 /governance-workspace
+/network
 /env.json.devel
 .idea

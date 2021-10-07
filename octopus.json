@@ -48,15 +48,33 @@
                     "cmd": "cd governance-workspace/jenkins/quorum-fresh-mode && npm install"
                 }
             ]
+        },
+        {
+            "name": "create quorum compose file",
+            "src": ".",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "npx quorum-wizard generate --config ./configs/traceability-config.json"
+                }
+            ]
         }
     ],
     "build": [
         {
-            "name": "Raise goQuorum Node",
+            "name": "patch and build dockers",
             "actions": [
                 {
+                    "type": "copy",
+                    "src": "./patches/ethereum-anchoring",
+                    "target": "./ethereum-anchoring",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
                     "type": "execute",
-                    "cmd": "cd governance-workspace/jenkins/quorum-fresh-mode && node ./stages/AdmAcc/stage.js"
+                    "cmd": "cd bin/quorum && ./adaptorAndSmartContract.sh"
                 }
             ]
         }
