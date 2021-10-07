@@ -9,7 +9,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "79d5831dd2312e5dc8ff902cccd20b35b7b570f4"
+                    "commit": "2ab2945299ff659bb55b4f8ab53cb8868b376ab8"
                 },
                 {
                     "type": "execute",
@@ -45,22 +45,40 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "6fa5a22500a8b7c945b70fa97b38ce0ef5099fd0"
+                    "commit": "e8f861bbbc392b10010b8fd869743879f6fec886"
                 },
                 {
                     "type": "execute",
                     "cmd": "cd governance-workspace/jenkins/quorum-fresh-mode && npm install"
                 }
             ]
+        },
+        {
+            "name": "create quorum compose file",
+            "src": ".",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "npx quorum-wizard generate --config ./configs/traceability-config.json"
+                }
+            ]
         }
     ],
     "build": [
         {
-            "name": "Raise goQuorum Node",
+            "name": "patch and build dockers",
             "actions": [
                 {
+                    "type": "copy",
+                    "src": "./patches/ethereum-anchoring",
+                    "target": "./ethereum-anchoring",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
                     "type": "execute",
-                    "cmd": "cd governance-workspace/jenkins/quorum-fresh-mode && node ./stages/AdmAcc/stage.js"
+                    "cmd": "cd bin/quorum && ./adaptorAndSmartContract.sh"
                 }
             ]
         }
