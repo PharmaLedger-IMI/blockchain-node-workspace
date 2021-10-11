@@ -21,15 +21,21 @@ npm run build-all
 
 When the build-all finishes, it will leave several docker containers running.
 
+## Starting up for the 2nd Time
+
+```
+nvm use 14
+cd blockchain-node-workspace
+npm run node-start
+```
+
 ## Stopping
 
 ```
 npm run node-stop
 ```
 
-## Starting up for the 2nd Time
+## Remove and release space for the docker images
 
-```
-npm run node-start
-```
+Must execute the "Stopping" procedure first.
 
