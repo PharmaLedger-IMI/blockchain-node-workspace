@@ -7,5 +7,4 @@ This repository :
 ```
 npm install
 npm run build-all
-npm run server
 ```
