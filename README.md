@@ -1,8 +1,10 @@
 # blockchain-node-workspace
 
 This repository :
-* uses goquorum wizard to setup a local ETH node (with 4 nodes, cakeshop, txmanager, etc...)
+* uses goquorum wizard to setup a local ETH node (with 4 nodes + tm with instanbul consensus protocol, cakeshop, etc... - docker subnet 172.16.63.0/24)
 * It then uses https://github.com/PharmaLedger-IMI/ethereum-anchoring.git to setup anchoring services
+
+It is suitable for developers experimenting with OpenDSU blockchain anchoring. **It is not suitable for production**.
 
 ## Pre-requesites
 
@@ -21,15 +23,25 @@ npm run build-all
 
 When the build-all finishes, it will leave several docker containers running.
 
+## Starting up for the 2nd Time
+
+```
+nvm use 14
+cd blockchain-node-workspace
+npm run build-all # only needed if you deleted the docker images
+npm run node-start
+```
+
 ## Stopping
 
 ```
 npm run node-stop
 ```
 
-## Starting up for the 2nd Time
+## Remove and release space for the docker images
+
+Must execute the "Stopping" procedure first.
 
 ```
-npm run node-start
+docker system prune -a
 ```
-

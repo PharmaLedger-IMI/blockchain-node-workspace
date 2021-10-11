@@ -17,7 +17,7 @@
     "clean-build": "npm run clean; npm run build privatesky; npm run build-all",
     "freeze": "node ./node_modules/octopus/scripts/freeze dependencies",
     "node-start": "cd network/traceability && ./start.sh",
-    "node-stop": "cd network/traceability && ./stopt.sh"
+    "node-stop": "cd network/traceability && ./stop.sh"
   },
   "author": "Tiago Venceslau",
   "license": "MIT",
