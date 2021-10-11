@@ -60,13 +60,13 @@ function getTruffleConfiguration() {
   {
     console.log('Using env ACCOUNT : ', process.env.ACCOUNT);
     truffleConfig.networks.internal.from =  process.env.ACCOUNT;
-    truffleConfig.networks.development.from =  process.env.ACCOUNT;
+    truffleConfig.networks.traceability.from =  process.env.ACCOUNT;
   }
   if (typeof process.env.RPC_HOST !== "undefined")
   {
     console.log('Using env RPC_HOST : ', process.env.RPC_HOST);
     truffleConfig.networks.internal.host =  process.env.RPC_HOST;
-    truffleConfig.networks.development.host =  process.env.RPC_HOST;
+    truffleConfig.networks.traceability.host =  process.env.RPC_HOST;
   }
   return truffleConfig;
 }
