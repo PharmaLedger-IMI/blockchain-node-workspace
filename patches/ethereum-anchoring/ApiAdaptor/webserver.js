@@ -1,7 +1,7 @@
 const express = require('express');
 
 function logRequests(request, response, next) {
-    console.log(`[REQUEST] - ${request.baseUrl} - ${request.body} - ${request.params} - ${request.path}`);
+    console.log(`[REQUEST] - ${request.baseUrl} - ${request.body} - ${request.params ? JSON.stringify(request.params) : request.params} - ${request.path}`);
     next();
 }
 
