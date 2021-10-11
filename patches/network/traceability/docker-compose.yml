@@ -294,7 +294,7 @@ services:
   smartcontract:
     container_name: smartcontract
     build:
-      context: ../../SmartContract
+      context: ../../ethereum-anchoring/SmartContract
     hostname: smartcontract
     ports:
       - "5000:5000"
@@ -302,7 +302,7 @@ services:
       node1:
         condition: service_healthy
     networks:
-      pdmfc-4ibft-net:
+      traceability-net:
         ipv4_address: 172.16.63.50
     healthcheck:
       test: [ "CMD", "wget", "--spider", "--proxy", "off", "http://172.16.63.50:5000/contractaddress" ]
@@ -313,7 +313,7 @@ services:
   apiadaptor:
     container_name: apiadaptor
     build:
-      context: ApiAdaptor
+      context: ../../ethereum-anchoring/ApiAdaptor
     hostname: apiadaptor
     ports:
       - "3000:3000"
@@ -321,7 +321,7 @@ services:
       smartcontract:
         condition: service_healthy
     networks:
-      pdmfc-4ibft-net:
+      traceability-net:
         ipv4_address: 172.16.63.51
     environment:
       - RPC_ADDRESS=http://172.20.63.11:8545
