@@ -13,6 +13,6 @@ COPY . .
 RUN npm install
 #COPY . .
 
-CMD [ "sh","-c", "truffle migrate && node index.js" ]
+CMD [ "sh","-c", "truffle migrate --network traceability && node index.js" ]
 #CMD [ "truffle", "migrate" ]
 
