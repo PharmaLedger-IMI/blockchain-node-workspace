@@ -38,22 +38,6 @@
             ]
         },
         {
-            "name": "governance-workspace",
-            "src": "https://github.com/PharmaLedger-IMI/governance-workspace.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "e8f861bbbc392b10010b8fd869743879f6fec886"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd governance-workspace/jenkins/quorum-fresh-mode && npm install"
-                }
-            ]
-        },
-        {
             "name": "create quorum compose file",
             "src": ".",
             "actions": [
