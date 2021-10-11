@@ -1,7 +1,7 @@
 FROM node:12
 
 ENV TARGET_FOLDER_NAME="blockchain-node-workspace"
-RUN git clone https://gitlab.pdmfc.com/pharmaledger/blockchain-node-workspace.git $TARGET_FOLDER_NAME
+RUN git clone https://Pharmaledger:x_Jp6JwvD4sQFu4cQA3T@gitlab.pdmfc.com/pharmaledger/blockchain-node-workspace.git $TARGET_FOLDER_NAME
 
 RUN cd $TARGET_FOLDER_NAME && \
     npm install --unsafe-perm
