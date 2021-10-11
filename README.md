@@ -12,7 +12,9 @@ https://docs.goquorum.consensys.net/en/stable/Tutorials/Quorum-Dev-Quickstart/Us
 ## 1st Time Installation and Startup
 
 ```
+nvm use 14
 git clone https://gitlab.pdmfc.com/pharmaledger/blockchain-node-workspace.git
+cd blockchain-node-workspace
 npm install
 npm run build-all
 ```
