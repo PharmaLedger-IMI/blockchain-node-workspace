@@ -39,3 +39,6 @@ npm run node-stop
 
 Must execute the "Stopping" procedure first.
 
+```
+docker system prune -a
+```
