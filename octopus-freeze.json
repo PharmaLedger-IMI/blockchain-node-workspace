@@ -36,6 +36,19 @@
                     "cmd": "cd ethereum-anchoring/SmartContract && npm install"
                 }
             ]
+        },
+        {
+            "name": "patch for debugging",
+            "actions": [
+                {
+                    "type": "copy",
+                    "src": "./patches/ethereum-anchoring",
+                    "target": "./ethereum-anchoring",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
         }
     ],
     "build": [
