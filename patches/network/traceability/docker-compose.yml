@@ -324,7 +324,7 @@ services:
       traceability-net:
         ipv4_address: 172.16.63.51
     environment:
-      - RPC_ADDRESS=http://172.20.63.11:8545
+      - RPC_ADDRESS=http://172.16.63.11:8545
       - ACCOUNT=0xed9d02e382b34818e88b88a309c7fe71e65f419d
       - SMARTCONTRACT_ENDPOINT=http://172.16.63.50:5000/contractaddress
 networks:
