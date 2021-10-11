@@ -8,3 +8,5 @@ This repository :
 npm install
 npm run build-all
 ```
+
+When the build-all finishes, it will leave several docker containers running.
