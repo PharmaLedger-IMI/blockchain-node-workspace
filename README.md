@@ -4,6 +4,8 @@ This repository :
 * uses goquorum wizard to setup a local ETH node (with 4 nodes, cakeshop, txmanager, etc...)
 * It then uses https://github.com/PharmaLedger-IMI/ethereum-anchoring.git to setup anchoring services
 
+It is suitable for developers experimenting with OpenDSU blockchain anchoring. **It is not suitable for production**.
+
 ## Pre-requesites
 
 https://docs.goquorum.consensys.net/en/stable/Tutorials/Quorum-Dev-Quickstart/Using-the-Quickstart/#prerequisites
