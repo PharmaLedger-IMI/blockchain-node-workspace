@@ -2,13 +2,6 @@ const express = require('express');
 
 function logRequests(request, response, next) {
     console.log(`[REQUEST] - ${request.baseUrl} - ${request.body} - ${request.params ? JSON.stringify(request.params) : request.params} - ${request.path}`);
-
-    const method = response.send.bind(response);
-
-    response.send = (...args) => {
-        console.log(...args);
-        method(...args);
-    }
     next();
 }
 
