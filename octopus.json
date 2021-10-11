@@ -4,7 +4,8 @@
         {
             "name": "privatesky",
             "src": "https://github.com/PrivateSky/psk-release.git",
-            "actions": [{
+            "actions": [
+                {
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false
@@ -33,7 +34,9 @@
                     "cmd": "cd ethereum-anchoring/SmartContract && npm install"
                 }
             ]
-        },
+        }
+    ],
+    "build": [
         {
             "name": "create quorum compose file",
             "src": ".",
@@ -43,9 +46,7 @@
                     "cmd": "npx quorum-wizard generate --config ./configs/traceability-config.json"
                 }
             ]
-        }
-    ],
-    "build": [
+        },
         {
             "name": "patch and build dockers",
             "actions": [
@@ -58,8 +59,16 @@
                     }
                 },
                 {
+                    "type": "copy",
+                    "src": "./patches/network",
+                    "target": "./network",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
                     "type": "execute",
-                    "cmd": "cd bin/quorum && ./adaptorAndSmartContract.sh"
+                    "cmd": "npm run node-start"
                 }
             ]
         }

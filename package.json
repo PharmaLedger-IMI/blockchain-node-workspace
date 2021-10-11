@@ -15,7 +15,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "node ./bin/clean.js ./",
     "clean-build": "npm run clean; npm run build privatesky; npm run build-all",
-    "freeze": "node ./node_modules/octopus/scripts/freeze dependencies"
+    "freeze": "node ./node_modules/octopus/scripts/freeze dependencies",
+    "node-start": "cd network/traceability && ./start.sh",
+    "node-stop": "cd network/traceability && ./stopt.sh"
   },
   "author": "Tiago Venceslau",
   "license": "MIT",
