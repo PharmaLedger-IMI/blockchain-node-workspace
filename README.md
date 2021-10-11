@@ -26,6 +26,7 @@ When the build-all finishes, it will leave several docker containers running.
 ```
 nvm use 14
 cd blockchain-node-workspace
+npm run build-all # only needed if you deleted the docker images
 npm run node-start
 ```
 
