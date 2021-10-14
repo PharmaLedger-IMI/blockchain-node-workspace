@@ -149,7 +149,7 @@ x-cakeshop-def:
 services:
   node1:
     << : *quorum-def
-    container_name: node1-traceability
+    container_name: node1-blockchain
     hostname: node1
     ports:
       - "22000:8545"
@@ -164,11 +164,11 @@ services:
       - PRIVATE_CONFIG=/qdata/tm/tm.ipc
       - NODE_ID=1
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.11
   txmanager1:
     << : *tx-manager-def
-    container_name: txmanager1-traceability
+    container_name: txmanager1-blockchain
     hostname: txmanager1
     ports:
       - "9081:9080"
@@ -176,13 +176,13 @@ services:
       - vol1:/qdata
       - ./qdata:/examples:ro
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.101
     environment:
       - NODE_ID=1
   node2:
     << : *quorum-def
-    container_name: node2-traceability
+    container_name: node2-blockchain
     hostname: node2
     ports:
       - "22001:8545"
@@ -197,11 +197,11 @@ services:
       - PRIVATE_CONFIG=/qdata/tm/tm.ipc
       - NODE_ID=2
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.12
   txmanager2:
     << : *tx-manager-def
-    container_name: txmanager2-traceability
+    container_name: txmanager2-blockchain
     hostname: txmanager2
     ports:
       - "9082:9080"
@@ -209,13 +209,13 @@ services:
       - vol2:/qdata
       - ./qdata:/examples:ro
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.102
     environment:
       - NODE_ID=2
   node3:
     << : *quorum-def
-    container_name: node3-traceability
+    container_name: node3-blockchain
     hostname: node3
     ports:
       - "22002:8545"
@@ -230,11 +230,11 @@ services:
       - PRIVATE_CONFIG=/qdata/tm/tm.ipc
       - NODE_ID=3
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.13
   txmanager3:
     << : *tx-manager-def
-    container_name: txmanager3-traceability
+    container_name: txmanager3-blockchain
     hostname: txmanager3
     ports:
       - "9083:9080"
@@ -242,13 +242,13 @@ services:
       - vol3:/qdata
       - ./qdata:/examples:ro
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.103
     environment:
       - NODE_ID=3
   node4:
     << : *quorum-def
-    container_name: node4-traceability
+    container_name: node4-blockchain
     hostname: node4
     ports:
       - "22003:8545"
@@ -263,11 +263,11 @@ services:
       - PRIVATE_CONFIG=/qdata/tm/tm.ipc
       - NODE_ID=4
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.14
   txmanager4:
     << : *tx-manager-def
-    container_name: txmanager4-traceability
+    container_name: txmanager4-blockchain
     hostname: txmanager4
     ports:
       - "9084:9080"
@@ -275,13 +275,13 @@ services:
       - vol4:/qdata
       - ./qdata:/examples:ro
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.104
     environment:
       - NODE_ID=4
   cakeshop:
     << : *cakeshop-def
-    container_name: cakeshop-traceability
+    container_name: cakeshop-blockchain
     hostname: cakeshop
     ports:
       - "8999:8999"
@@ -289,7 +289,7 @@ services:
       - cakeshopvol:/qdata
       - ./qdata:/examples:ro
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.75
   smartcontract:
     container_name: smartcontract
@@ -302,14 +302,14 @@ services:
       node1:
         condition: service_healthy
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.50
     healthcheck:
       test: [ "CMD", "wget", "--spider", "--proxy", "off", "http://172.16.63.50:5000/contractaddress" ]
       interval: 3s
       timeout: 3s
       retries: 10
-      start_period: 5s
+      start_period: 10s
   apiadaptor:
     container_name: apiadaptor
     build:
@@ -321,15 +321,15 @@ services:
       smartcontract:
         condition: service_healthy
     networks:
-      traceability-net:
+      blockchain-net:
         ipv4_address: 172.16.63.51
     environment:
       - RPC_ADDRESS=http://172.16.63.11:8545
       - ACCOUNT=0xed9d02e382b34818e88b88a309c7fe71e65f419d
       - SMARTCONTRACT_ENDPOINT=http://172.16.63.50:5000/contractaddress
 networks:
-  traceability-net:
-    name: traceability-net
+  blockchain-net:
+    name: blockchain-net
     driver: bridge
     ipam:
       driver: default

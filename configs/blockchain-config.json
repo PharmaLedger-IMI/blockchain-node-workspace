@@ -1,6 +1,6 @@
 {
   "network": {
-    "name": "traceability",
+    "name": "blockchain",
     "verbosity": 5,
     "consensus": "istanbul",
     "quorumVersion": "21.4.0",
@@ -8,7 +8,7 @@
     "permissioned": true,
     "genesisFile": "none",
     "generateKeys": false,
-    "configDir": "network/traceability/resources",
+    "configDir": "network/blockchain/resources",
     "deployment": "docker-compose",
     "cakeshop": "0.12.1",
     "splunk": false,

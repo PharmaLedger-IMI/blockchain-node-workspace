@@ -18,7 +18,7 @@ nvm use 14
 git clone https://gitlab.pdmfc.com/pharmaledger/blockchain-node-workspace.git
 cd blockchain-node-workspace
 npm install
-npm run build-all
+npm run deploy-blockchain
 ```
 
 When the build-all finishes, it will leave several docker containers running.
@@ -28,7 +28,7 @@ When the build-all finishes, it will leave several docker containers running.
 ```
 nvm use 14
 cd blockchain-node-workspace
-npm run build-all # only needed if you deleted the docker images
+npm run deploy-blockchain # only needed if you deleted the docker images
 npm run node-start
 ```
 

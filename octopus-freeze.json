@@ -2,22 +2,6 @@
     "workDir": ".",
     "dependencies": [
         {
-            "name": "privatesky",
-            "src": "https://github.com/PrivateSky/psk-release.git",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "commit": "2ab2945299ff659bb55b4f8ab53cb8868b376ab8"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd privatesky && npm install"
-                }
-            ]
-        },
-        {
             "name": "ethereum-anchoring",
             "src": "https://github.com/PharmaLedger-IMI/ethereum-anchoring.git",
             "actions": [
@@ -36,29 +20,34 @@
                     "cmd": "cd ethereum-anchoring/SmartContract && npm install"
                 }
             ]
-        },
+        }
+    ],
+    "deploy-api-adaptor-dependencies": [
         {
-            "name": "patch for debugging",
+            "name": "privatesky",
+            "src": "https://github.com/PrivateSky/psk-release.git",
             "actions": [
                 {
-                    "type": "copy",
-                    "src": "./patches/ethereum-anchoring",
-                    "target": "./ethereum-anchoring",
-                    "options": {
-                        "overwrite": true
-                    }
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false,
+                    "commit": "2ab2945299ff659bb55b4f8ab53cb8868b376ab8"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd privatesky && npm install"
                 }
             ]
         }
     ],
-    "build": [
+    "deploy-blockchain": [
         {
             "name": "create quorum compose file",
             "src": ".",
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "npx quorum-wizard generate --config ./configs/traceability-config.json"
+                    "cmd": "npx quorum-wizard generate --config ./configs/blockchain-config.json"
                 }
             ]
         },

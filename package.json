@@ -16,8 +16,9 @@
     "clean": "node ./bin/clean.js ./",
     "clean-build": "npm run clean; npm run build privatesky; npm run build-all",
     "freeze": "node ./node_modules/octopus/scripts/freeze dependencies",
-    "node-start": "cd network/traceability && ./start.sh",
-    "node-stop": "cd network/traceability && ./stop.sh"
+    "deploy-blockchain": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run deploy-blockchain\"",
+    "node-start": "cd network/blockchain && ./start.sh",
+    "node-stop": "cd network/blockchain && ./stop.sh"
   },
   "author": "Tiago Venceslau",
   "license": "MIT",

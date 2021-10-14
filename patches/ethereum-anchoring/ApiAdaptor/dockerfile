@@ -7,7 +7,7 @@ RUN cd $TARGET_FOLDER_NAME && \
     npm install --unsafe-perm
 
 RUN cd $TARGET_FOLDER_NAME && \
-    npm run build privatesky
+    npm run build privatesky && npm run deploy-api-adaptor-dependencies
 
 WORKDIR /$TARGET_FOLDER_NAME/ethereum-anchoring/ApiAdaptor
 
