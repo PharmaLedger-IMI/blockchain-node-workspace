@@ -17,6 +17,7 @@
     "clean-build": "npm run clean; npm run build privatesky; npm run build-all",
     "freeze": "node ./node_modules/octopus/scripts/freeze dependencies",
     "deploy-blockchain": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run deploy-blockchain\"",
+    "deploy-api-adaptor-dependencies": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run deploy-api-adaptor-dependencies\"",
     "node-start": "cd network/blockchain && ./start.sh",
     "node-stop": "cd network/blockchain && ./stop.sh"
   },
