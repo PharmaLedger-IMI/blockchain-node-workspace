@@ -4,6 +4,7 @@ To Francisco:
 subnet 172.16.63.0/24? (it works locally, but won't globally') Do we map all necessary services to a single ip? Can we do it in docker compose?
 
 -> Reverse proxy: nginx ou traefik na máquina host dos dockers, e depois forward das firewalls para o reverse proxy
+   Ou adicionar uma host network aos containers.... + complicado.
 
 2 - Single node + join blockchain network scripts for partners who want/need a node
 
