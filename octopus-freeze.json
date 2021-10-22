@@ -40,12 +40,36 @@
     ],
     "deploy-blockchain": [
         {
+            "name": "clear previous installment",
+            "src": ".",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "npx rimraf network"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "npx rimraf tmp"
+                }
+            ]
+        },
+        {
+            "name": "patch config files",
+            "src": ".",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "node bin/build-blockchain-configs.js"
+                }
+            ]
+        },
+        {
             "name": "create quorum compose file",
             "src": ".",
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "npx quorum-wizard generate --config ./configs/blockchain-config.json"
+                    "cmd": "npx quorum-wizard generate --config ./tmp/blockchain-config.json"
                 }
             ]
         },
@@ -61,12 +85,8 @@
                     }
                 },
                 {
-                    "type": "copy",
-                    "src": "./patches/network",
-                    "target": "./network",
-                    "options": {
-                        "overwrite": true
-                    }
+                    "type": "execute",
+                    "cmd": "node bin/patch-network.js"
                 },
                 {
                     "type": "execute",
