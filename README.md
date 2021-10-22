@@ -38,10 +38,13 @@ npm run node-start
 npm run node-stop
 ```
 
-## Remove and release space for the docker images
+## Remove and release space for the docker images and network
 
 Must execute the "Stopping" procedure first.
 
+**Use with care:** These lines will remove all unused docker images and networks on your system.
+
 ```
-docker system prune -a
+docker system prune -af
+docker network prune -f
 ```
