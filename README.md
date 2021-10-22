@@ -13,11 +13,15 @@ https://docs.goquorum.consensys.net/en/stable/Tutorials/Quorum-Dev-Quickstart/Us
 
 ## 1st Time Installation and Startup
 
+available configuration:
+ - name: defaults to 'blockchain'
+
 ```
 nvm use 14
 git clone https://gitlab.pdmfc.com/pharmaledger/blockchain-node-workspace.git
 cd blockchain-node-workspace
 npm install
+npm run config-blockchain -- --name=template
 npm run deploy-blockchain
 ```
 

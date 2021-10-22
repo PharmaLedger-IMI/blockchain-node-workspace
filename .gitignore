@@ -5,3 +5,4 @@ node_modules
 /network
 /env.json.devel
 .idea
+/tmp
