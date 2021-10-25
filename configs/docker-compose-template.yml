@@ -306,9 +306,9 @@ services:
         ipv4_address: 172.16.63.50
     healthcheck:
       test: [ "CMD", "wget", "--spider", "--proxy", "off", "http://172.16.63.50:5000/contractaddress" ]
-      interval: 3s
+      interval: 10s
       timeout: 3s
-      retries: 10
+      retries: 30
       start_period: 10s
   apiadaptor:
     container_name: apiadaptor
