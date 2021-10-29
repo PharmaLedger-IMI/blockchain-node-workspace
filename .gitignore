@@ -6,5 +6,6 @@ node_modules
 /.idea
 /tmp
 /configs/*-config.json
-!/client-node/qdata/**.md
+!/client-node/qdata/cleaf/*.md
+!/client-node/qdata/ddleaf/*.md
 /client-node/qdata
