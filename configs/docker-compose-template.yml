@@ -327,6 +327,33 @@ services:
       - RPC_ADDRESS=http://172.16.63.11:8545
       - ACCOUNT=0xed9d02e382b34818e88b88a309c7fe71e65f419d
       - SMARTCONTRACT_ENDPOINT=http://172.16.63.50:5000/contractaddress
+#  wireguard:
+#    image: linuxserver/wireguard
+#    container_name: goquorum-wireguard
+#    cap_add:
+#      - NET_ADMIN
+#      - SYS_MODULE
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - TZ=Europe/Lisbon
+#      - SERVERURL=${wireguard} #optional
+#      - SERVERPORT=51820 #optional
+#      - PEERS=9 #optional
+#      - PEERDNS=auto #optional
+#      - INTERNAL_SUBNET=10.1.1.0
+#      - ALLOWEDIPS=172.16.63.0/24
+#    volumes:
+#      - ./wireguard-server/config:/config
+#      #- /lib/modules:/lib/modules
+#    ports:
+#      - 51820:51820/udp
+#    sysctls:
+#      - net.ipv4.conf.all.src_valid_mark=1
+#    restart: unless-stopped
+#    networks:
+#      ${name}-net:
+#        ipv4_address: 172.16.63.254
 networks:
   ${name}-net:
     name: ${name}-net

@@ -1,9 +1,10 @@
 /privatesky
 node_modules
 /ethereum-anchoring
-/governance-workspace
 /network
 /env.json.devel
-.idea
+/.idea
 /tmp
 /configs/*-config.json
+!/client-node/qdata/**.md
+/client-node/qdata
