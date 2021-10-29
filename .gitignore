@@ -7,4 +7,5 @@ node_modules
 /tmp
 /configs/*-config.json
 /client-node/qdata
-!/client-node/qdata/**.md
+!/client-node/qdata/cleaf/*.md
+!/client-node/qdata/ddleaf/*.md
