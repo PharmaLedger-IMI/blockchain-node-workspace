@@ -19,13 +19,12 @@
         },
         {
             "name": "ethereum-anchoring",
-            "src": "https://github.com/PharmaLedger-IMI/ethereum-anchoring.git",
+            "src": "https://github.com/PharmaLedger-IMI/ethadapter.git",
             "actions": [
                 {
                     "type": "smartClone",
                     "target": ".",
-                    "collectLog": false,
-                    "commit": "aa70c71e5d03c3dbf2c66a81437d5120460130e2"
+                    "collectLog": false
                 },
                 {
                     "type": "execute",
