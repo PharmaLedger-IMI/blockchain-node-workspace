@@ -28,7 +28,7 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd ethereum-anchoring/EthAdaptor && npm install"
+                    "cmd": "cd ethereum-anchoring/EthAdapter && npm install"
                 },
                 {
                     "type": "execute",
