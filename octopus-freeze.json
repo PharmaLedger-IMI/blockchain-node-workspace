@@ -50,6 +50,7 @@
                     "cmd": "cd quorum-docker/template && npm install"
                 }
             ]
+        }
     ],
     "deploy-blockchain": [
         {
