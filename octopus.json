@@ -34,6 +34,21 @@
                     "cmd": "cd ethereum-anchoring/SmartContract && npm install"
                 }
             ]
+        },
+        {
+            "name": "quorum-docker",
+            "src": "https://github.com/PharmaLedger-IMI/quorum-docker.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd quorum-docker/template && npm install"
+                }
+            ]
         }
     ],
     "deploy-blockchain": [
