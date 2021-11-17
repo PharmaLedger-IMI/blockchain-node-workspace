@@ -30,7 +30,9 @@
                     "cmd": "cd ethereum-anchoring/EthAdapter && npm install"
                 }
             ]
-        },
+        }
+    ],
+    "deploy-blockchain2":[
         {
             "name": "quorum-docker",
             "src": "https://github.com/PharmaLedger-IMI/quorum-docker.git",
@@ -43,6 +45,26 @@
                 {
                     "type": "execute",
                     "cmd": "cd quorum-docker/template && npm install"
+                }
+            ]
+        },
+        {
+            "name": "patch goQuorum",
+            "src": ".",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd quorum-docker/quorum && docker-compose pull && docker-compose up -d"
+                }
+            ]
+        },
+        {
+            "name": "start goQuorum",
+            "src": ".",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd quorum-docker/quorum && docker-compose pull && docker-compose up -d"
                 }
             ]
         }

@@ -54,8 +54,7 @@ const writeFile = function(data, filePath){
 }
 
 const filePaths = [
-    `configs${path.sep}blockchain-config-template.json`,
-    `configs/${path.sep}docker-compose-template.yml`
+    `configs${path.sep}docker-compose-template.yml`
 ];
 
 const handleDir = function(dir){

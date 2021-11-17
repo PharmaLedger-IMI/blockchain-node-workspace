@@ -17,7 +17,7 @@
     "clean-build": "npm run clean; npm run build privatesky; npm run build-all",
     "freeze": "node ./node_modules/octopus/scripts/freeze dependencies",
     "config-blockchain": "npx rimraf network && npx rimraf tmp && node bin/build-blockchain-configs.js",
-    "deploy-blockchain": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run deploy-blockchain\" && node bin/patch-network.js && npm run node-start",
+    "deploy-blockchain": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run deploy-blockchain2\"",
     "node-start": "node bin/runInNetwork.js --cmd=\"./start.sh\"",
     "node-stop": "node bin/runInNetwork.js --cmd=\"./stop.sh\"",
     "node-kill": "node bin/runInNetwork.js --cmd=\"./down.sh\""
@@ -28,7 +28,6 @@
     "octopus": "git+http://github.com/privatesky/octopus.git"
   },
   "devDependencies": {
-    "quorum-wizard": "^1.3.3",
     "rimraf": "^3.0.2"
   }
 }
