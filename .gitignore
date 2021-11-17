@@ -1,6 +1,7 @@
 /privatesky
 node_modules
 /ethereum-anchoring
+/
 /network
 /env.json.devel
 /.idea
