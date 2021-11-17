@@ -33,6 +33,7 @@
             ]
         }
     ],
+
     "deploy-blockchain2":[
         {
             "name": "quorum-docker",
@@ -60,6 +61,14 @@
                     "options": {
                         "overwrite": true
                     }
+                },
+                {
+                    "type": "copy",
+                    "src": "./ethereum-anchoring/SmartContracts/contracts/anchoringSC.sol",
+                    "target": "./quorum-docker/template/anchoring-sc/anchoringSC.sol",
+                    "options": {
+                        "overwrite": true
+                    }
                 }
             ]
         },
@@ -70,6 +79,46 @@
                 {
                     "type": "execute",
                     "cmd": "cd quorum-docker/quorum && docker-compose pull && docker-compose up -d"
+                }
+            ]
+        },
+        {
+            "name": "Setup Organization & smart contract",
+            "src": ".",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd quorum-docker/template && node ./stages/OrgAcc/stage.js"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd quorum-docker/template && node ./stages/deployAnchoringSC/stage.js"
+                },
+                {
+                    "type": "copy",
+                    "src": "./quorum-docker/template/stages/OrgAcc/orgAcc.json",
+                    "target": "./quorum-docker/ethAdapter/orgAcc.json",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./quorum-docker/template/stages/deployAnchoringSC/anchoringSCInfo.json",
+                    "target": "./quorum-docker/ethAdapter/anchoringSCInfo.json",
+                    "options": {
+                        "overwrite": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Setup Smart Contract",
+            "src": ".",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd quorum-docker/template && node ./stages/deployAnchoringSC/stage.js"
                 }
             ]
         }
