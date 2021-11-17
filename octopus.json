@@ -53,8 +53,12 @@
             "src": ".",
             "actions": [
                 {
-                    "type": "execute",
-                    "cmd": "cd quorum-docker/quorum && docker-compose pull && docker-compose up -d"
+                    "type": "copy",
+                    "src": "./tmp/docker-compose.yml",
+                    "target": "./quorum-docker/quorum/docker-compose.yml",
+                    "options": {
+                        "overwrite": true
+                    }
                 }
             ]
         },
