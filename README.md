@@ -1,14 +1,15 @@
 # blockchain-node-workspace
 
 This repository :
-* uses goquorum wizard to setup a local ETH node (with 4 nodes + tm with instanbul consensus protocol, cakeshop, etc... - docker subnet 172.16.63.0/24)
-* It then uses https://github.com/PharmaLedger-IMI/ethereum-anchoring.git to setup anchoring services
+* Depends on https://github.com/PharmaLedger-IMI/quorum-docker.git to setup a GoQuorum private network
+* Depends on https://github.com/PharmaLedger-IMI/ethereum-anchoring.git for anchoring services
 
 It is suitable for developers experimenting with OpenDSU blockchain anchoring. **It is not suitable for production**.
 
 ## Pre-requesites
 
-https://docs.goquorum.consensys.net/en/stable/Tutorials/Quorum-Dev-Quickstart/Using-the-Quickstart/#prerequisites
+1. Same as in https://github.com/ConsenSys/quorum-dev-quickstart#prerequisites (and has not been tested on Windows, so far).
+
 
 
 ## 1st Time Installation and Startup
