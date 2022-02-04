@@ -1,12 +1,7 @@
-/privatesky
 node_modules
-/ethereum-anchoring
-/quorum-docker
-/network
+/configs/*-config.json
+/ethadapter
 /env.json.devel
+/quorum-docker
 /.idea
 /tmp
-/configs/*-config.json
-/client-node/qdata
-!/client-node/qdata/cleaf/*.md
-!/client-node/qdata/ddleaf/*.md

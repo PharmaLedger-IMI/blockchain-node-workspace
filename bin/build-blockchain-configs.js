@@ -1,4 +1,11 @@
-const tempFolder = 'tmp';
+// globals
+
+const fs = require('fs');
+const path = require('path');
+
+const TEMP_FOLDER = 'tmp';
+
+// functions
 
 const argParser = function(defaultOpts, args){
     let config = JSON.parse(JSON.stringify(defaultOpts));
@@ -24,15 +31,6 @@ const argParser = function(defaultOpts, args){
     return config;
 }
 
-const defaultOps = {
-    name: "blockchain"
-}
-
-const conf = argParser(defaultOps, process.argv);
-
-const fs = require('fs');
-const path = require('path');
-
 const readFile = function(filePath){
     let data;
     try {
@@ -53,10 +51,6 @@ const writeFile = function(data, filePath){
     }
 }
 
-const filePaths = [
-    `configs${path.sep}docker-compose-template.yml`
-];
-
 const handleDir = function(dir){
     const dirname = path.dirname(dir);
     if (!fs.existsSync(dirname))
@@ -73,7 +67,7 @@ const handleFile = function(filePath){
         data = data.replace(new RegExp("\\\$\\\{" + k + "\\\}", 'gm'), conf[k]);
     });
 
-    const outPath = filePath.replace(/configs\//g, tempFolder + path.sep).replace(/-template/g, '');
+    const outPath = filePath.replace(/configs\//g, TEMP_FOLDER + path.sep).replace(/-template/g, '');
 
     handleDir(path.dirname(outPath));
     writeFile(data, outPath);
@@ -86,10 +80,23 @@ const banner = function(){
     console.log(`---------------------------------------`);
 }
 
+// main
+
+const defaultOps = {
+    name: "blockchain"
+}
+
+const conf = argParser(defaultOps, process.argv);
+
+const filePaths = [
+    `configs${path.sep}quorum-docker-compose-template.yml`,
+    `configs${path.sep}ethAdapter-dockerfile-template`
+];
+
 banner();
 filePaths.forEach(handleFile);
 
-console.log(`Updated Config files are available under the ${tempFolder} folder`);
+console.log(`Updated Config files are available under the ${TEMP_FOLDER} folder`);
 
 
 
