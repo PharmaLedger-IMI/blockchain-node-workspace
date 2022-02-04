@@ -32,7 +32,7 @@
             ]
         }
     ],
-    "deploy-blockchain2": [
+    "deploy-blockchain": [
         {
             "name": "patch quorum-docker",
             "src": ".",
@@ -161,31 +161,6 @@
                     "comment": "This does not seem windows compat. TODO. Extracted from quorum-docker/ethAdapter/deploy-ethAdapter.sh",
                     "type": "execute",
                     "cmd": "curl -I http://localhost:3000/check | head -n 1"
-                }
-            ]
-        }
-    ],
-    "deploy-blockchain": [
-        {
-            "name": "create quorum compose file",
-            "src": ".",
-            "actions": [
-                {
-                    "type": "execute",
-                    "cmd": "npx quorum-wizard generate --config ./tmp/blockchain-config.json"
-                }
-            ]
-        },
-        {
-            "name": "patch and build dockers",
-            "actions": [
-                {
-                    "type": "copy",
-                    "src": "./patches/ethereum-anchoring",
-                    "target": "./ethereum-anchoring",
-                    "options": {
-                        "overwrite": true
-                    }
                 }
             ]
         }

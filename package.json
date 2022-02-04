@@ -1,26 +1,14 @@
 {
   "name": "blockchain-node-workspace",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Blockchain node adapter",
   "main": "index.js",
   "scripts": {
     "dev-install": "node ./bin/mkDevEnv.js && npm install",
     "postinstall": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run\"",
-    "build": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/build\"",
-    "build-all": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run build\"",
-    "server": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"cd privatesky && npm run start\"",
-    "switch-to-release": "npm run remove privatesky && npm run add privatesky http://github.com/privatesky/psk-release.git 0",
-    "switch-to-dev": "npm run remove privatesky && npm run add privatesky http://github.com/privatesky/privatesky.git 0",
-    "watch": "node ./bin/watcher/watcher.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "node ./bin/clean.js ./",
-    "clean-build": "npm run clean; npm run build privatesky; npm run build-all",
     "freeze": "node ./node_modules/octopus/scripts/freeze dependencies",
     "config-blockchain": "npx rimraf network && npx rimraf tmp && node bin/build-blockchain-configs.js",
-    "deploy-blockchain": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run deploy-blockchain2\"",
-    "node-start": "node bin/runInNetwork.js --cmd=\"./start.sh\"",
-    "node-stop": "node bin/runInNetwork.js --cmd=\"./stop.sh\"",
-    "node-kill": "node bin/runInNetwork.js --cmd=\"./down.sh\""
+    "deploy-blockchain": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run deploy-blockchain\""
   },
   "author": "Tiago Venceslau",
   "license": "MIT",
