@@ -158,7 +158,7 @@
                 {
                     "comment": "This does not seem windows compat. TODO. Extracted from quorum-docker/ethAdapter/deploy-ethAdapter.sh",
                     "type": "execute",
-                    "cmd": "curl -I GET http://localhost:3000/check | head -n 1"
+                    "cmd": "curl -I http://localhost:3000/check | head -n 1"
                 }
             ]
         }
