@@ -55,12 +55,17 @@ Stopping does not looses data. (Several docker external volumes where created on
 
 Must execute the "Stopping" procedure first.
 
-**Use with care:** If that does not work, the following will stop and remove all docker images on your system:
+**Use with care:** If that does not work, the following will stop and remove all docker images on your system (even from other workspaces):
 
 ```
 docker kill $(docker ps -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
+```
+
+Eliminate ALL docker volumes (even from other workspace):
+```
+docker volume rm $(docker volume ls -q)
 ```
 
 Then eliminate unused image space and networks.
