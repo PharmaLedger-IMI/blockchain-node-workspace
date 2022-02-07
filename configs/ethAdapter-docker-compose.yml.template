@@ -6,8 +6,8 @@ services:
     build: .
     container_name: ethAdapter
     hostname: ethAdapter
-    ports:
-      - "3000:3000"
+    #ports: # CTR already has a service on port 3000. Keep using the private 172.16.16.16:3000 address
+    #  - "3000:3000"
     environment:
       - RPC_ADDRESS=http://node1-qbn:8545
       - SMARTCONTRACTADDRESS=%SMARTCONTRACTADDRESS%
