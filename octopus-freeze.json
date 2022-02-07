@@ -62,15 +62,6 @@
                     "options": {
                         "overwrite": true
                     }
-                },
-                {
-                    "comment": "This file needs no backup, because it would be fetch from https://raw.githubusercontent.com/PharmaLedger-IMI/ethadapter/master/EthAdapter/dockerfile when running quorum-docker/ethAdapter/deploy-ethAdapter.sh",
-                    "type": "copy",
-                    "src": "./ethadapter/SmartContracts/contracts/anchoringSC.sol",
-                    "target": "./quorum-docker/template/anchoring-sc/anchoringSC.sol",
-                    "options": {
-                        "overwrite": true
-                    }
                 }
             ]
         },
