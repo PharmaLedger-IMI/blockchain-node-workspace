@@ -5,6 +5,16 @@ const path = require('path');
 
 const TEMP_FOLDER = 'tmp';
 
+const defaultOps = {
+    name: "blockchain"
+}
+
+const filePaths = [
+    `configs${path.sep}quorum-docker-compose-template.yml`,
+    `configs${path.sep}ethAdapter-dockerfile-template`,
+    `configs${path.sep}ethAdapter-docker-compose.yml.template`
+];
+
 // functions
 
 const argParser = function(defaultOpts, args){
@@ -82,16 +92,7 @@ const banner = function(){
 
 // main
 
-const defaultOps = {
-    name: "blockchain"
-}
-
 const conf = argParser(defaultOps, process.argv);
-
-const filePaths = [
-    `configs${path.sep}quorum-docker-compose-template.yml`,
-    `configs${path.sep}ethAdapter-dockerfile-template`
-];
 
 banner();
 filePaths.forEach(handleFile);

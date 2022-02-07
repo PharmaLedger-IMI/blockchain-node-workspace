@@ -39,22 +39,17 @@ When the build-all finishes, it will leave several docker containers running.
 
 ## Starting up for the 2nd Time
 
-WARNING: NOT UP TO DATE!
-
 ```
-nvm use 14
-cd blockchain-node-workspace
-npm run deploy-blockchain # only needed if you deleted the docker images
-npm run node-start
+npm run start-blockchain
 ```
 
 ## Stopping
 
-WARNING: NOT UP TO DATE!
+```
+npm run stop-blockchain
+```
 
-```
-npm run node-stop
-```
+Stopping does not looses data. (Several docker external volumes where created on the 1st-time installation, and these will keep the required data between stop/start).
 
 ## Remove and release space for the docker images and network
 

@@ -1,0 +1,27 @@
+# copied from quorum-docker/ethAdapter/template/docker-compose.yml.template at e8b03aa15523263de739985ba5981df50c179b23
+version: "2.3"
+services:
+  ethAdapter:
+    image: ethadapter:latest
+    build: .
+    container_name: ethAdapter
+    hostname: ethAdapter
+    #ports: # let the ethAdapter remain at a private network address 172.16.16.16
+    #  - "3000:3000"
+    environment:
+      - RPC_ADDRESS=http://node1-qbn:8545
+      - SMARTCONTRACTADDRESS=0xE826698530Fb1b62563b59a2f086404C84505611
+      - 'SMARTCONTRACTABI=[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"statusCode","type":"uint256"}],"name":"InvokeStatus","type":"event"},{"inputs":[{"internalType":"string","name":"anchorID","type":"string"},{"internalType":"bytes32","name":"controlString","type":"bytes32"},{"internalType":"string","name":"newHashLinkSSI","type":"string"},{"internalType":"string","name":"ZKPValue","type":"string"},{"internalType":"string","name":"lastHashLinkSSI","type":"string"},{"internalType":"bytes","name":"signature","type":"bytes"},{"internalType":"bytes","name":"publicKey","type":"bytes"}],"name":"addAnchor","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"check","outputs":[{"internalType":"int256","name":"","type":"int256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"anchor","type":"string"}],"name":"getAnchorVersions","outputs":[{"components":[{"internalType":"string","name":"newHashLinkSSI","type":"string"},{"internalType":"string","name":"lastHashLinkSSI","type":"string"},{"internalType":"string","name":"ZKPValue","type":"string"}],"internalType":"struct anchoringSC.AnchorValue[]","name":"","type":"tuple[]"}],"stateMutability":"view","type":"function"}]'
+      - 'ORGACCOUNT={"privateKey":"0xcb76ad176b75bc6bbb542c085a3c67dd1503da12be7c771af5dfedcadd638ef1","address":"0x8F9cc8904b829cb16fbA8b19623E89C466FB49fB"}'
+    networks:
+      qbn-net:
+        ipv4_address: 172.16.16.16
+
+networks:
+  qbn-net:
+    name: qbn-net
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.16.0/24

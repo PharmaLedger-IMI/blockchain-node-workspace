@@ -145,6 +145,22 @@
                     }
                 },
                 {
+                    "type": "copy",
+                    "src": "./quorum-docker/ethAdapter/template/docker-compose.yml.template",
+                    "target": "./quorum-docker/ethAdapter/template/docker-compose.yml.template.bck",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
+                    "type": "copy",
+                    "src": "./tmp/ethAdapter-docker-compose.yml.template",
+                    "target": "./quorum-docker/ethAdapter/template/docker-compose.yml.template",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
                     "type": "execute",
                     "cmd": "cd quorum-docker/template && node ./stages/deployEthAdapter/stage.js"
                 },
@@ -160,7 +176,7 @@
                 {
                     "comment": "This does not seem windows compat. TODO. Extracted from quorum-docker/ethAdapter/deploy-ethAdapter.sh",
                     "type": "execute",
-                    "cmd": "curl -I http://localhost:3000/check | head -n 1"
+                    "cmd": "curl -I http://172.16.16.16:3000/check | head -n 1"
                 }
             ]
         }
