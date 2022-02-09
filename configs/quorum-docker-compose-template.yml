@@ -49,7 +49,7 @@ x-quorum-def:
       EXTRA_ARGS="${QUORUM_GETH_ARGS:-}"
       geth --datadir $${DDIR} init $${GENESIS_FILE}
       geth \
-        --emitcheckpoints --istanbul.blockperiod 3 --mine --minerthreads 1 --syncmode full \
+        --emitcheckpoints --istanbul.blockperiod 1 --mine --minerthreads 1 --syncmode full \
         --identity node$${NODE_ID}-${QUORUM_CONSENSUS:-istanbul} \
         --datadir $${DDIR} \
         --permissioned \
