@@ -37,6 +37,8 @@ When the build-all finishes, it will leave several docker containers running.
 - web3labs/epirus-free-*,nginx,mongo - ethereum explorer available on port 8700  (also available on https://www.web3labs.com/epirus-explorer)
 - ethadapter - from ePi workspace - exposed on port 3000
 
+**WARNING:** Only run this once. If you repeat the `npm run deploy-blockchain` the smart contract will be deployed again at a different address, the ethAdapter will be re-configured for that address and will not be able to see any previous hashes. (So you will loose access to previous anchors.)
+
 ## Starting up for the 2nd Time
 
 ```
@@ -51,9 +53,16 @@ npm run stop-blockchain
 
 Stopping does not looses data. (Several docker external volumes where created on the 1st-time installation, and these will keep the required data between stop/start).
 
-## Remove and release space for the docker images and network
+## Remove and release space for the docker images, volumes and network
 
 Must execute the "Stopping" procedure first.
+
+Then run:
+```
+docker container prune
+docker volume prune
+docker network prune
+```
 
 **Use with care:** If that does not work, the following will stop and remove all docker images on your system (even from other workspaces):
 
