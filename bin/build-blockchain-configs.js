@@ -10,9 +10,10 @@ const defaultOps = {
 }
 
 const filePaths = [
-    `configs${path.sep}quorum-docker-compose-template.yml`,
+    `configs${path.sep}quorum-docker-compose-template.yml`,,
+    `configs${path.sep}blockchain-explorer-dockerfile-compose.yml`,
     `configs${path.sep}ethAdapter-dockerfile-template`,
-    `configs${path.sep}ethAdapter-docker-compose.yml.template`
+    `configs${path.sep}ethAdapter-template-docker-compose.yml.template`
 ];
 
 // functions

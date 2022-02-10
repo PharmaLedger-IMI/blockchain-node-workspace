@@ -60,6 +60,14 @@
             "src": ".",
             "actions": [
                 {
+                    "type": "copy",
+                    "src": "./tmp/blockhain-explorer-docker-compose.yml",
+                    "target": "./quorum-docker/blockchain-explorer/docker-compose.yml",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
                     "type": "execute",
                     "cmd": "cd quorum-docker/blockchain-explorer && docker-compose pull && docker-compose -f docker-compose.yml -f docker-compose-quorum.yml up -d"
                 }
@@ -119,7 +127,7 @@
                 },
                 {
                     "type": "copy",
-                    "src": "./tmp/ethAdapter-docker-compose.yml.template",
+                    "src": "./tmp/ethAdapter-template-docker-compose.yml.template",
                     "target": "./quorum-docker/ethAdapter/template/docker-compose.yml.template",
                     "options": {
                         "overwrite": true
