@@ -63,7 +63,7 @@
             "actions": [
                 {
                     "type": "copy",
-                    "src": "./tmp/blockhain-explorer-docker-compose.yml",
+                    "src": "./tmp/blockchain-explorer-docker-compose.yml",
                     "target": "./quorum-docker/blockchain-explorer/docker-compose.yml",
                     "options": {
                         "overwrite": true
