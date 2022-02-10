@@ -2,11 +2,7 @@
 version: "3.6"
 x-restart-def:
   &restart-def
-  restart_policy:
-    condition: on-failure
-    delay: 15s
-    max_attempts: 3
-    window: 120s
+  restart: "unless-stopped"
 
 services:
   api:
