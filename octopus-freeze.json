@@ -39,7 +39,7 @@
             "actions": [
                 {
                     "type": "copy",
-                    "src": "./tmp/quorum-docker-compose.yml",
+                    "src": "./tmp/quorum_docker-compose.yml",
                     "target": "./quorum-docker/quorum/docker-compose.yml",
                     "options": {
                         "overwrite": true
