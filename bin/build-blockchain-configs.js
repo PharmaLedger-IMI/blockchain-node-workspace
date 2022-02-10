@@ -10,10 +10,10 @@ const defaultOps = {
 }
 
 const filePaths = [
-    `configs${path.sep}quorum-docker-compose-template.yml`,,
-    `configs${path.sep}blockchain-explorer-docker-compose.yml`,
-    `configs${path.sep}ethAdapter-dockerfile-template`,
-    `configs${path.sep}ethAdapter-template-docker-compose.yml.template`
+    `configs${path.sep}quorum_docker-compose.yml`,,
+    `configs${path.sep}blockchain-explorer_docker-compose.yml`,
+    `configs${path.sep}ethAdapter_dockerfile`,
+    `configs${path.sep}ethAdapter_template_docker-compose.yml.template`
 ];
 
 // functions
@@ -78,7 +78,8 @@ const handleFile = function(filePath){
         data = data.replace(new RegExp("\\\$\\\{" + k + "\\\}", 'gm'), conf[k]);
     });
 
-    const outPath = filePath.replace(/configs\//g, TEMP_FOLDER + path.sep).replace(/-template/g, '');
+    // jpsl: Removal of "-template" in the file name no longer happens.
+    const outPath = filePath.replace(/configs\//g, TEMP_FOLDER + path.sep);
 
     handleDir(path.dirname(outPath));
     writeFile(data, outPath);

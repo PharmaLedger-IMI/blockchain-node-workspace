@@ -61,7 +61,7 @@
             "actions": [
                 {
                     "type": "copy",
-                    "src": "./tmp/blockchain-explorer-docker-compose.yml",
+                    "src": "./tmp/blockchain-explorer_docker-compose.yml",
                     "target": "./quorum-docker/blockchain-explorer/docker-compose.yml",
                     "options": {
                         "overwrite": true
@@ -119,7 +119,7 @@
                 {
                     "comment": "Originally this file would be downloaded from https://raw.githubusercontent.com/PharmaLedger-IMI/ethadapter/master/EthAdapter/dockerfile. Now using a freezed copy.",
                     "type": "copy",
-                    "src": "./tmp/ethAdapter-dockerfile",
+                    "src": "./tmp/ethAdapter_dockerfile",
                     "target": "./quorum-docker/ethAdapter/dockerfile",
                     "options": {
                         "overwrite": true
@@ -127,7 +127,7 @@
                 },
                 {
                     "type": "copy",
-                    "src": "./tmp/ethAdapter-template-docker-compose.yml.template",
+                    "src": "./tmp/ethAdapter_template_docker-compose.yml.template",
                     "target": "./quorum-docker/ethAdapter/template/docker-compose.yml.template",
                     "options": {
                         "overwrite": true
