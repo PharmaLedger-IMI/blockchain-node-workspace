@@ -1,4 +1,11 @@
 # Originally copied from https://github.com/PharmaLedger-IMI/quorum-docker/blob/e8b03aa15523263de739985ba5981df50c179b23/quorum/docker-compose.yml
+#
+# geth insecure settings
+#
+#       --allow-insecure-unlock \
+#       --unlock 0 \
+#       --password $${DDIR}/keystore/password.txt \
+#
 # The following environment variables are substituted if present
 # * QUORUM_CONSENSUS: default to istanbul
 # * QUORUM_DOCKER_IMAGE: default to quorumengineering/quorum:2.5.0
@@ -54,6 +61,9 @@ x-quorum-def:
         echo "Existing container."
       fi
       geth \
+        --allow-insecure-unlock \
+        --unlock 0 \
+        --password $${DDIR}/keystore/password.txt \
         --emitcheckpoints --istanbul.blockperiod 1 --mine --minerthreads 1 --syncmode full \
         --identity node$${NODE_ID}-${QUORUM_CONSENSUS:-istanbul} \
         --datadir $${DDIR} \
