@@ -1,3 +1,4 @@
+# Originally copied from https://github.com/PharmaLedger-IMI/quorum-docker/blob/e8b03aa15523263de739985ba5981df50c179b23/quorum/docker-compose.yml
 # The following environment variables are substituted if present
 # * QUORUM_CONSENSUS: default to istanbul
 # * QUORUM_DOCKER_IMAGE: default to quorumengineering/quorum:2.5.0
@@ -38,16 +39,20 @@ x-quorum-def:
       done
       fi
       DDIR=/qdata/dd
-      rm -rf $${DDIR}
-      mkdir -p $${DDIR}
-      cp -r /examples/dd$${NODE_ID}/* $${DDIR}
-      cp /examples/dd$${NODE_ID}/permissioned-nodes.json $${DDIR}/static-nodes.json
-      cp $${DDIR}/static-nodes.json $${DDIR}/permissioned-nodes.json
-      cat $${DDIR}/static-nodes.json
       GENESIS_FILE="/examples/dd$${NODE_ID}/genesis.json"
       NETWORK_ID=$$(cat $${GENESIS_FILE} | grep chainId | awk -F " " '{print $$2}' | awk -F "," '{print $$1}')
       EXTRA_ARGS="${QUORUM_GETH_ARGS:-}"
-      geth --datadir $${DDIR} init $${GENESIS_FILE}
+      if [ ! -d $${DDIR} ]; then
+        echo "New container. Setting initial configuration: "
+        mkdir -p $${DDIR}
+        cp -r /examples/dd$${NODE_ID}/* $${DDIR}
+        cp /examples/dd$${NODE_ID}/permissioned-nodes.json $${DDIR}/static-nodes.json
+        cp $${DDIR}/static-nodes.json $${DDIR}/permissioned-nodes.json
+        cat $${DDIR}/static-nodes.json
+        geth --datadir $${DDIR} init $${GENESIS_FILE}
+      else
+        echo "Existing container."
+      fi
       geth \
         --emitcheckpoints --istanbul.blockperiod 1 --mine --minerthreads 1 --syncmode full \
         --identity node$${NODE_ID}-${QUORUM_CONSENSUS:-istanbul} \
