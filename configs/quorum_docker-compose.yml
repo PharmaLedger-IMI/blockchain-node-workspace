@@ -60,6 +60,7 @@ x-quorum-def:
       else
         echo "Existing container."
       fi
+      sleep 5 $${NODE_ID} # workaround restart issues
       geth \
         --allow-insecure-unlock \
         --unlock 0 \
