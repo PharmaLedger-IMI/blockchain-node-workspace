@@ -1,1 +1,2 @@
+# make sure that docker-compose can be found in PATH
 45 08 * * *     ( cd $HOME/blockchain-node-workspace/quorum-docker/quorum && bash -x ../../bin/reCreateQuorum.sh >>./log 2>&1 )
