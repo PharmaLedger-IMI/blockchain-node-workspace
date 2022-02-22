@@ -25,6 +25,11 @@ x-quorum-def:
     timeout: 3s
     retries: 10
     start_period: 5s
+  logging:
+    driver: "json-file"
+    options:
+      max-file: "5"
+      max-size: "10m"
   labels:
     com.quorum.consensus: ${QUORUM_CONSENSUS:-istanbul}
   entrypoint:
