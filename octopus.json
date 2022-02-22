@@ -69,7 +69,8 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd quorum-docker/blockchain-explorer && docker-compose pull && docker-compose -f docker-compose.yml -f docker-compose-quorum.yml up -d"
+                    "cmd": "cd quorum-docker/blockchain-explorer && docker-compose pull && docker-compose -f docker-compose.yml up -d",
+                    "commented_cmd": "cd quorum-docker/blockchain-explorer && docker-compose pull && docker-compose -f docker-compose.yml -f docker-compose-quorum.yml up -d"
                 }
             ]
         },

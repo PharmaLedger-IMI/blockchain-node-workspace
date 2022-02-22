@@ -22,6 +22,8 @@ networks:
   qbn-net:
     name: qbn-net
     driver: bridge
+    # The quorum services should have created the network, and its them that should delete them.
+    external: true
     ipam:
       driver: default
       config:
