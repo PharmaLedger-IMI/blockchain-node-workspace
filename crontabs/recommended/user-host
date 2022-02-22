@@ -1,2 +1,5 @@
-# make sure that docker-compose can be found in PATH
-45 08 * * *     ( cd $HOME/blockchain-node-workspace/quorum-docker/quorum && bash -x ../../bin/reCreateQuorum.sh >>./log 2>&1 )
+# This crontab hould not be needed after v0.2.4 https://github.com/PharmaLedger-IMI/blockchain-node-workspace/issues/2#issuecomment-1047801006
+# so all the lines are commented out
+# make sure that docker-compose can be found in PATH - not needed if docker-compose is on regular /usr/bin
+#PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+#45 08 * * *     ( cd $HOME/blockchain-node-workspace/quorum-docker/quorum && bash -x ../../bin/reCreateQuorum.sh >>./log 2>&1 )
