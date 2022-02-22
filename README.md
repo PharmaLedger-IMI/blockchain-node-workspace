@@ -53,6 +53,16 @@ npm run stop-blockchain
 
 Stopping does not looses data. (Several docker external volumes where created on the 1st-time installation, and these will keep the required data between stop/start).
 
+## Stopping and Removing
+
+```
+npm run down-blockchain
+```
+
+Does delete private networks, but DOES NOT DELETE the volumes containg the blockchain data.
+Nevertheless there have been problems reported on startup where consensus/mining seems
+to become broken (breaks adding anchors).
+
 ## Remove and release space for the docker images, volumes and network
 
 Must execute the "Stopping" procedure first.
