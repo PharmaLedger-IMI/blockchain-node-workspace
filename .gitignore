@@ -2,6 +2,5 @@ node_modules
 /configs/*-config.json
 /ethadapter
 /env.json.devel
-/quorum-docker
 /.idea
 /tmp
