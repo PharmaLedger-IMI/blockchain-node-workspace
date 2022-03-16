@@ -1,6 +1,12 @@
+# copied from https://github.com/PharmaLedger-IMI/quorum-docker/blob/e8b03aa15523263de739985ba5981df50c179b23/blockchain-explorer/docker-compose.yml
 version: "3.6"
+x-restart-def:
+  &restart-def
+  restart: "unless-stopped"
+
 services:
   api:
+    << : *restart-def
     image: web3labs/epirus-free-api:latest
     environment:
       - NODE_ENDPOINT=${NODE_ENDPOINT}
@@ -13,6 +19,7 @@ services:
       - epirus
 
   mongodb:
+    << : *restart-def
     image: mongo:latest
     ports:
       - 27017:27017
@@ -21,6 +28,7 @@ services:
       - epirus
 
   web:
+    << : *restart-def
     image: web3labs/epirus-free-web:latest
     environment:
       - API_URL=/api
@@ -30,6 +38,7 @@ services:
       - epirus
 
   ingestion:
+    << : *restart-def
     image: web3labs/epirus-free-ingestion:latest
     environment:
       - NODE_ENDPOINT=${NODE_ENDPOINT}
@@ -41,6 +50,7 @@ services:
       - epirus
 
   nginx:
+    << : *restart-def
     image: nginx:latest
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
