@@ -30,7 +30,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd blockchain-explorer && docker-compose pull && docker-compose -f docker-compose.yml up -f docker-compose-quorum.yml -d"
+                    "cmd": "cd blockchain-explorer && docker-compose pull && docker-compose -f docker-compose.yml -f docker-compose-quorum.yml up -d"
                 }
             ]
         }
