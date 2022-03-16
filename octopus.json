@@ -20,7 +20,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd quorum && docker-compose pull && docker-compose up -d"
+                    "cmd": "cd quorum && docker-compose up -d"
                 }
             ]
         },
@@ -30,7 +30,21 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd blockchain-explorer && docker-compose pull && docker-compose -f docker-compose.yml -f docker-compose-quorum.yml up -d"
+                    "cmd": "cd blockchain-explorer && docker-compose -f docker-compose.yml -f docker-compose-quorum.yml up -d"
+                }
+            ]
+        },
+        {
+            "name": "Create Org Account and deploy smart contract",
+            "src": ".",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "node bin/createOrgAcc.js"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "node bin/deployAnchoringSC.js"
                 }
             ]
         }

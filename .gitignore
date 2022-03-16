@@ -3,4 +3,5 @@ node_modules
 /ethadapter
 /env.json.devel
 /.idea
+/stages
 /tmp
