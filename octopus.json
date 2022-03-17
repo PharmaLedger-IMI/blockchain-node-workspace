@@ -47,6 +47,20 @@
                     "cmd": "node bin/deployAnchoringSC.js"
                 }
             ]
+        },
+        {
+            "name": "Build ethAdapter docker with env replaced",
+            "src": ".",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "node bin/deployEthAdapter.js"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd ethadapter/EthAdapter && docker-compose up -d"
+                }
+            ]
         }
     ]
 }

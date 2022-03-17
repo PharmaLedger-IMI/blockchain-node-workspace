@@ -2,23 +2,6 @@
     "workDir": ".",
     "dependencies": [
         {
-            "name": "quorum-docker",
-            "src": "https://github.com/PharmaLedger-IMI/quorum-docker",
-            "actions": [
-                {
-                    "type": "smartClone",
-                    "target": ".",
-                    "collectLog": false,
-                    "comment": "Main ETH setup scripts.",
-                    "commit": "e8b03aa15523263de739985ba5981df50c179b23"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd quorum-docker/template && npm install"
-                }
-            ]
-        },
-        {
             "name": "ethadapter",
             "src": "https://github.com/PharmaLedger-IMI/ethadapter.git",
             "actions": [
@@ -26,133 +9,57 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "comment": "Only needed to have a frozen local copy of https://raw.githubusercontent.com/PharmaLedger-IMI/ethadapter/master/SmartContracts/contracts/anchoringSC.sol",
-                    "commit": "62c61b45c9ff44900d31d79d1efc803e024c3589"
+                    "commit": "a63308f5ffe1182311dc10b6e49473727b8acc99"
                 }
             ]
         }
     ],
     "deploy-blockchain": [
         {
-            "name": "patch quorum-docker after install",
+            "name": "start goQuorum as in quorum/deploy-quorum.sh",
             "src": ".",
             "actions": [
                 {
-                    "type": "copy",
-                    "src": "./tmp/quorum_docker-compose.yml",
-                    "target": "./quorum-docker/quorum/docker-compose.yml",
-                    "options": {
-                        "overwrite": true
-                    }
+                    "type": "execute",
+                    "cmd": "cd quorum && docker-compose up -d"
                 }
             ]
         },
         {
-            "name": "start goQuorum as in ./quorum-docker/quorum/deploy-quorum.sh",
+            "name": "Start blockchain explorer as in blockchain-explorer/deploy-explorer.sh",
             "src": ".",
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd quorum-docker/quorum && docker-compose pull && docker-compose up -d"
+                    "cmd": "cd blockchain-explorer && docker-compose -f docker-compose.yml -f docker-compose-quorum.yml up -d"
                 }
             ]
         },
         {
-            "name": "Start blockchain explorer as in ./quorum-docker/blockchain-explorer/deploy-explorer.sh",
+            "name": "Create Org Account and deploy smart contract",
             "src": ".",
             "actions": [
                 {
-                    "type": "copy",
-                    "src": "./tmp/blockchain-explorer_docker-compose.yml",
-                    "target": "./quorum-docker/blockchain-explorer/docker-compose.yml",
-                    "options": {
-                        "overwrite": true
-                    }
+                    "type": "execute",
+                    "cmd": "node bin/createOrgAcc.js"
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd quorum-docker/blockchain-explorer && docker-compose pull && docker-compose -f docker-compose.yml up -d",
-                    "commented_cmd": "cd quorum-docker/blockchain-explorer && docker-compose pull && docker-compose -f docker-compose.yml -f docker-compose-quorum.yml up -d"
+                    "cmd": "node bin/deployAnchoringSC.js"
                 }
             ]
         },
         {
-            "name": "Setup Organization & smart contract ./quorum-docker/ethAdapter/deploy-anchoringSC.sh",
+            "name": "Build ethAdapter docker with env replaced",
             "src": ".",
             "actions": [
                 {
-                    "comment": "This file would be fetched from https://raw.githubusercontent.com/PharmaLedger-IMI/ethadapter/master/SmartContracts/contracts/anchoringSC.sol when running quorum-docker/ethAdapter/deploy-anchoringSC.sh - now using a frozen version.",
-                    "type": "copy",
-                    "src": "./ethadapter/SmartContracts/contracts/anchoringSC.sol",
-                    "target": "./quorum-docker/template/anchoring-sc/anchoringSC.sol",
-                    "options": {
-                        "overwrite": true
-                    }
+                    "type": "execute",
+                    "cmd": "node bin/deployEthAdapter.js"
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd quorum-docker/template && node ./stages/OrgAcc/stage.js"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd quorum-docker/template && node ./stages/deployAnchoringSC/stage.js"
-                },
-                {
-                    "type": "copy",
-                    "src": "./quorum-docker/template/stages/OrgAcc/orgAcc.json",
-                    "target": "./quorum-docker/ethAdapter/orgAcc.json",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "./quorum-docker/template/stages/deployAnchoringSC/anchoringSCInfo.json",
-                    "target": "./quorum-docker/ethAdapter/anchoringSCInfo.json",
-                    "options": {
-                        "overwrite": true
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Setup ETH Adapter - follows quorum-docker/ethAdapter/deploy-ethAdapter.sh",
-            "src": ".",
-            "actions": [
-                {
-                    "comment": "Originally this file would be downloaded from https://raw.githubusercontent.com/PharmaLedger-IMI/ethadapter/master/EthAdapter/dockerfile. Now using a freezed copy.",
-                    "type": "copy",
-                    "src": "./tmp/ethAdapter_dockerfile",
-                    "target": "./quorum-docker/ethAdapter/dockerfile",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "copy",
-                    "src": "./tmp/ethAdapter_template_docker-compose.yml.template",
-                    "target": "./quorum-docker/ethAdapter/template/docker-compose.yml.template",
-                    "options": {
-                        "overwrite": true
-                    }
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd quorum-docker/template && node ./stages/deployEthAdapter/stage.js"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd quorum-docker/ethAdapter && docker-compose pull && docker-compose up -d"
-                },
-                {
-                    "comment": "This does not seem windows compat. TODO. Extracted from quorum-docker/ethAdapter/deploy-ethAdapter.sh",
-                    "type": "execute",
-                    "cmd": "sleep 20s"
-                },
-                {
-                    "comment": "This does not seem windows compat. TODO. Extracted from quorum-docker/ethAdapter/deploy-ethAdapter.sh",
-                    "type": "execute",
-                    "cmd": "curl -I http://172.16.16.16:3000/check | head -n 1"
+                    "cmd": "cd ethadapter/EthAdapter && docker-compose up -d"
                 }
             ]
         }
