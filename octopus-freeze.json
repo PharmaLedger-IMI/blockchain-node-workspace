@@ -9,7 +9,7 @@
                     "type": "smartClone",
                     "target": ".",
                     "collectLog": false,
-                    "commit": "f308a44ed20c98c01e09ba794ab74fc6b40193ff"
+                    "commit": "62c61b45c9ff44900d31d79d1efc803e024c3589"
                 }
             ]
         }
