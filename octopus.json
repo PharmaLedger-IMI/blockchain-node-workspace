@@ -53,6 +53,15 @@
             "src": ".",
             "actions": [
                 {
+                    "comment": "Get a frozen dockerfile - to prevent getting the latest ePi.",
+                    "type": "copy",
+                    "src": "./configs/ethAdapter_dockerfile",
+                    "target": "./ethadapter/EthAdapter/dockerfile",
+                    "options": {
+                        "overwrite": true
+                    }
+                },
+                {
                     "type": "execute",
                     "cmd": "node bin/deployEthAdapter.js"
                 },

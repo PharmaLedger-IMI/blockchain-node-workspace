@@ -1,0 +1,33 @@
+# based on https://github.com/PharmaLedger-IMI/eth-adapter/blob/a63308f5ffe1182311dc10b6e49473727b8acc99/EthAdapter/dockerfile
+# to be frozen as it was then - 2022-03-17
+FROM debian:bullseye
+
+RUN apt-get update && \
+	apt-get -y install nodejs && \
+	apt-get -y install npm --no-install-recommends
+
+RUN npm install -g node-gyp
+
+RUN apt-get -y install git
+
+ENV TARGET_FOLDER_NAME="ePI-workspace"
+RUN git clone https://github.com/PharmaLedger-IMI/epi-workspace.git $TARGET_FOLDER_NAME
+
+# ePi as of 2022-03-16 - next, npm install may change that to the frozen version
+RUN cd $TARGET_FOLDER_NAME && \
+    git checkout adac48270eef5629ab2134ea3fc50be2da5e9f02
+
+RUN cd $TARGET_FOLDER_NAME && \
+    npm install --unsafe-perm
+
+RUN cd $TARGET_FOLDER_NAME && \
+    npm run build privatesky
+
+RUN cd $TARGET_FOLDER_NAME/ethadapter/EthAdapter && \
+    npm install --unsafe-perm --production
+
+WORKDIR /$TARGET_FOLDER_NAME/ethadapter/EthAdapter
+
+EXPOSE 3000
+
+CMD [ "node" , "index.js" ]
