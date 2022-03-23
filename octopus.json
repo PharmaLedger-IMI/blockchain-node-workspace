@@ -18,6 +18,15 @@
             ]
         },
         {
+            "name": "build privatesky",
+            "actions": [
+                {
+                    "type": "execute",
+                    "cmd": "cd privatesky && npm run build"
+                }
+            ]
+        },
+        {
             "name": "ethadapter",
             "src": "https://github.com/PharmaLedger-IMI/ethadapter.git",
             "actions": [
