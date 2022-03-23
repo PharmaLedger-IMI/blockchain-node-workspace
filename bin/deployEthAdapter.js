@@ -18,6 +18,18 @@ function updateEthAdapterConfigMap(){
     console.log(ethAdapter);
     fs.writeFileSync('./ethadapter/EthAdapter/docker-compose.yml',ethAdapter);
     console.log('./ethadapter/EthAdapter/docker-compose.yml file generated.')
+
+    // also write a bash environment
+    let tmpEnvSh=`
+export RPC_ADDRESS=http://172.16.16.11:8545
+export SMARTCONTRACTADDRESS='%SMARTCONTRACTADDRESS%'
+export SMARTCONTRACTABI='%SMARTCONTRACTABI%'
+export ORGACCOUNT='%ORGACCOUNT%'
+`;
+    tmpEnvSh = tmpEnvSh.replace('%SMARTCONTRACTADDRESS%',scData.contractAddress);
+    tmpEnvSh = tmpEnvSh.replace('%SMARTCONTRACTABI%',JSON.stringify(scData.abi));
+    tmpEnvSh = tmpEnvSh.replace('%ORGACCOUNT%',JSON.stringify(orgAccData));
+    fs.writeFileSync('./ethadapter/EthAdapter/tmpenv.sh',tmpEnvSh);
 }
 
 updateEthAdapterConfigMap();

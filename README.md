@@ -2,7 +2,7 @@
 
 This repository :
 * Depends on https://github.com/PharmaLedger-IMI/ethadapter.git for the ETH smart contract
-* Depends on https://github.com/PharmaLedger-IMI/epi.git for the ethadapter docker image.
+* Depends on https://github.com/privatesky/privatesky.git
 
 It is suitable for developers experimenting with OpenDSU blockchain anchoring. **It is not suitable for production**.
 
@@ -83,4 +83,24 @@ Then eliminate unused image space and networks.
 ```
 docker system prune -af
 docker network prune -f
+```
+
+
+# Running ethdapter outside docker
+
+If you want to test changes to ethadapter, it can run outside the docker environment.
+These steps should help you accomplish that.
+
+```sh
+# 1 - run que quorum dockers
+cd quorum && docker-compose up -d
+cd ..
+# 2 - create account
+node bin/createOrgAcc.js
+# 3 - deploy smart contract Anchoring.sol
+node bin/deployAnchoringSC.js
+# 4 - write ./ethadapter/EthAdapter/docker-compose.yml and tmpenv.sh with environment updated
+node bin/deployAnchoringSC.js
+# 5 - Include environment variables and run EthAdapter
+cd ethadapter/EthAdapter/ ; . tmpenv.sh ; node index.js
 ```

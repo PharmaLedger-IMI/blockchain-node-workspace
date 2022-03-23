@@ -18,7 +18,7 @@
             ]
         },
         {
-            "name": "build privatesky",
+            "name": "build privatesky needed to run ethadapter/EthAdapter/index.js",
             "actions": [
                 {
                     "type": "execute",

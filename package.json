@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev-install": "node ./bin/mkDevEnv.js && npm install",
-    "postinstall": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run\"",
+    "postinstall": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"npm run do-install\"",
+    "do-install": "node ./node_modules/octopus/scripts/ensureFreezeState.js && node ./node_modules/octopus/scripts/run",
     "freeze": "node ./node_modules/octopus/scripts/freeze dependencies",
     "deploy-blockchain": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run deploy-blockchain\"",
     "start-blockchain": "cd quorum && docker-compose up -d && cd ../blockchain-explorer && docker-compose -f docker-compose.yml -f docker-compose-quorum.yml up -d && cd ../ethAdapter/EthAdapter && docker-compose up -d && sleep 20s && curl -I http://172.16.16.16:3000/check",
