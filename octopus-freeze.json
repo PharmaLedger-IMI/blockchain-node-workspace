@@ -2,6 +2,22 @@
     "workDir": ".",
     "dependencies": [
         {
+            "name": "privatesky",
+            "src": "http://github.com/privatesky/privatesky.git",
+            "actions": [
+                {
+                    "type": "smartClone",
+                    "target": ".",
+                    "collectLog": false,
+                    "commit": "be6671410fcfede5f451127112d6879f90922810"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "cd privatesky && npm install"
+                }
+            ]
+        },
+        {
             "name": "ethadapter",
             "src": "https://github.com/PharmaLedger-IMI/ethadapter.git",
             "actions": [
