@@ -2,6 +2,7 @@
 # to be frozen as it was then - 2022-03-17
 FROM debian:bullseye
 
+# Seems that debian bullseye comes with node 12 and npm 7
 RUN apt-get update && \
 	apt-get -y install nodejs && \
 	apt-get -y install npm --no-install-recommends

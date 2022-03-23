@@ -47,6 +47,10 @@
                 {
                     "type": "execute",
                     "cmd": "cd quorum && docker-compose up -d"
+                },
+                {
+                    "type": "execute",
+                    "cmd": "node -e \"setTimeout(()=>{},5000)\""
                 }
             ]
         },
