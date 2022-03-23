@@ -50,7 +50,7 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "node -e \"setTimeout(()=>{},5000)\""
+                    "cmd": "node -e \"setTimeout(()=>{},30000)\""
                 }
             ]
         },
