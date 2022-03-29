@@ -1,6 +1,6 @@
 {
   "name": "blockchain-node-workspace",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Blockchain node adapter",
   "main": "index.js",
   "scripts": {
