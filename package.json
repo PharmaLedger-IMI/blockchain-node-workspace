@@ -11,7 +11,8 @@
     "deploy-blockchain": "node ./node_modules/octopus/scripts/setEnv --file=../../../env.json \"node ./node_modules/octopus/scripts/run deploy-blockchain\"",
     "start-blockchain": "cd quorum && docker-compose up -d && cd ../blockchain-explorer && docker-compose -f docker-compose.yml -f docker-compose-quorum.yml up -d && cd ../ethAdapter/EthAdapter && docker-compose up -d && sleep 20s && curl -I http://172.16.16.16:3000/check",
     "stop-blockchain": "cd ethadapter/EthAdapter && docker-compose stop && cd ../../blockchain-explorer && docker-compose -f docker-compose.yml stop && cd ../quorum && docker-compose stop",
-    "down-blockchain": "cd ethadapter/EthAdapter && docker-compose down && cd ../../blockchain-explorer && docker-compose -f docker-compose.yml down && cd ../quorum && docker-compose down"
+    "down-blockchain": "cd ethadapter/EthAdapter && docker-compose down && cd ../../blockchain-explorer && docker-compose -f docker-compose.yml down && cd ../quorum && docker-compose down",
+    "reset-blockchain": "npm run down-blockchain && cd ./quorum && docker volume prune --force && cd .. && npm run deploy-blockchain"
   },
   "author": "Tiago Venceslau",
   "license": "MIT",
