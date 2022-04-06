@@ -4,6 +4,7 @@
 #ATOPR=atop/*
 #ATOPR1=$(ls -1 atop/* | sort -r | head -1)
 #eval atopsar -r $ATOPR
+echo YYYUMMDD SWPFREE
 for AF in atop/*
 do
     DAY=$(echo $AF | cut -d_ -f2- )
