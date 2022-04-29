@@ -11,13 +11,12 @@ RUN npm install -g node-gyp
 
 RUN apt-get -y install git
 
-ENV TARGET_FOLDER_NAME="blockchain-node-workspace"
+ENV TARGET_FOLDER_NAME="/blockchain-node-workspace"
 RUN git clone https://github.com/PharmaLedger-IMI/blockchain-node-workspace.git $TARGET_FOLDER_NAME
 
 # remove some folders not needed, for a smaller image
 RUN cd $TARGET_FOLDER_NAME && \
     rm -rf blockchain-explorer quorum workdocks
-
 
 RUN cd $TARGET_FOLDER_NAME && \
     npm install --unsafe-perm
@@ -29,7 +28,7 @@ RUN cd $TARGET_FOLDER_NAME && \
 RUN cd $TARGET_FOLDER_NAME/ethadapter/EthAdapter && \
     npm install --unsafe-perm --production
 
-WORKDIR /$TARGET_FOLDER_NAME/ethadapter/EthAdapter
+WORKDIR $TARGET_FOLDER_NAME/ethadapter/EthAdapter
 
 EXPOSE 3000
 
