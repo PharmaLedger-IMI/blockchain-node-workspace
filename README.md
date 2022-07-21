@@ -1,5 +1,7 @@
 # blockchain-node-workspace
 
+A docker-compose+bash script environment to run GoQuorum + ethAdapter.
+
 This repository :
 * Depends on https://github.com/PharmaLedger-IMI/ethadapter.git for the ETH smart contract
 * Depends on https://github.com/privatesky/privatesky.git
