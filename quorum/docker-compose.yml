@@ -160,7 +160,7 @@ services:
       - PRIVATE_CONFIG=ignore
       - NODE_ID=4
     networks:
-      qbn-net:
+      dsu-bc-net:
         ipv4_address: 172.16.16.14
 
 networks:
