@@ -24,7 +24,7 @@ npm run deploy-blockchain
 ```
 
 When the deploy-blockchain finishes, it will leave several docker containers running.
-- quorum x 4 - Geth/instanbul nodes using a local IPv4 bridge network private qbn-net 172.16.16.*/24. Node 1 is at 172.16.16.11.
+- quorum x 4 - Geth/instanbul nodes using a local IPv4 bridge network private dsu-bc-net 172.16.16.*/24. Node 1 is at 172.16.16.11.
 - web3labs/epirus-free-*,nginx,mongo - ethereum explorer available on host port 8700  (also available on https://www.web3labs.com/epirus-explorer)
 - ethadapter - from ePi workspace - exposed on qbn-net private address:port 172.16.16.16:3000
 

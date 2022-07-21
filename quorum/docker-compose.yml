@@ -109,7 +109,7 @@ services:
       - PRIVATE_CONFIG=ignore
       - NODE_ID=1
     networks:
-      qbn-net:
+      dsu-bc-net:
         ipv4_address: 172.16.16.11
   node2:
     << : *quorum-def
@@ -126,7 +126,7 @@ services:
       - PRIVATE_CONFIG=ignore
       - NODE_ID=2
     networks:
-      qbn-net:
+      dsu-bc-net:
         ipv4_address: 172.16.16.12
   node3:
     << : *quorum-def
@@ -143,7 +143,7 @@ services:
       - PRIVATE_CONFIG=ignore
       - NODE_ID=3
     networks:
-      qbn-net:
+      dsu-bc-net:
         ipv4_address: 172.16.16.13
   node4:
     << : *quorum-def
@@ -164,8 +164,8 @@ services:
         ipv4_address: 172.16.16.14
 
 networks:
-  qbn-net:
-    name: qbn-net
+  dsu-bc-net:
+    name: dsu-bc-net
     driver: bridge
     ipam:
       driver: default

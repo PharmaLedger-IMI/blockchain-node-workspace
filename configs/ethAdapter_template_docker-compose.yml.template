@@ -15,11 +15,11 @@ services:
       - 'SMARTCONTRACTABI=%SMARTCONTRACTABI%'
       - 'ORGACCOUNT=%ORGACCOUNT%'
     networks:
-      qbn-net:
+      dsu-bc-net:
         ipv4_address: 172.16.16.16
 
 networks:
-  qbn-net:
+  dsu-bc-net:
     name: qbn-net
     # The quorum services should have created the network, and its them that should delete them.
     external: true
