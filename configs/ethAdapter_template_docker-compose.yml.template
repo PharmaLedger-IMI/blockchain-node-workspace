@@ -20,6 +20,6 @@ services:
 
 networks:
   dsu-bc-net:
-    name: qbn-net
+    name: dsu-bc-net
     # The quorum services should have created the network, and its them that should delete them.
     external: true
